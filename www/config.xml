@@ -17,4 +17,10 @@
         Nod Kopfnickend 
     </author>
 
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+    <gap:platform name="blackberry" />
+
+    <access origin="*" />
+
 </widget>
