@@ -1,54 +1,110 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Google Maps y PhoneGap</title>
-        <style>
-            #map-canvas{
-                width:100%;
-                height:400px
-            }
-        </style>
-    </head>
-    <body>
-        <div id="map-canvas"></div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-        <script>
-            var map;
-            var myLatlng;
-            function initialize(lat,long) {
-                myLatlng = new google.maps.LatLng(lat, long);
-                var mapOptions = {
-                    zoom: 8,
-                    center: myLatlng
-                };
-                
-                map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-                
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    title: 'Mi punto en el mapa'
-                });
-                
-            }
+        <title>RunBabyRun</title>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+        
+        <link rel="stylesheet" href="css/normalize.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+        <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+        
+        <script type="text/javascript" src="js/iscroll.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile.iscrollview.js"></script>
+        
+        <script type="text/javascript" src="js/jbclock.js"></script>
+        <script type="text/javascript" src="js/sounds.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
 
-            document.addEventListener("deviceready", onDeviceReady, false);
+    </head>
+
+    <body>
+
+        <div class="wrapper azul">
+			
+			<div class="nav">
+				
+				<select class="target_semana">
+					<option value="0">Semana 1</option>
+					<option value="1">Semana 2</option>
+					<option value="2">Semana 3</option>
+					<option value="3">Semana 4</option>
+					<option value="4">Semana 5</option>
+				</select>
+				
+				<select class="target_dia">
+					<option value="0">Día 1</option>
+					<option value="1">Día 2</option>
+					<option value="2">Día 3</option>
+					<option value="3">Día 4</option>
+					<option value="4">Día 5</option>
+				</select>
+				
+				<p class="txtWelcome">Bienvenido a la semana 1: día 1. Hoy es un gran comienzo, te has decidido a salir a correr. Hoy te espera una larga mañana.</p>
+	            <h1 class="btnComenzar">Comenzar</h1>
+	            <h1 class="btnSalir">Salir</h1>
+            </div>
             
-            function onDeviceReady() {
-                navigator.geolocation.getCurrentPosition(onSuccess, onError);
-            }
+            <div class="wrapper_clock">
+				<h2 class="type_exercise"></h2>
+	            <div class="clock">
+	                <!-- Days -->
+	                <div class="clock_days">
+	                    <div class="bgLayer">
+	                        <canvas id="canvas_days" width="122" height="122">
+	                            Tu navegador no soporta el tag canvas de HTML5.
+	                        </canvas>
+	                        <p class="val">0</p>
+	                        <p class="type_days">Dias</p>
+	                    </div>
+	                </div>
+	                <!-- Days -->
+	                <!-- Hours -->
+	                <div class="clock_hours">
+	                    <div class="bgLayer">
+	                        <canvas id="canvas_hours" width="122" height="122">
+	                            Tu navegador no soporta el tag canvas de HTML5.
+	                        </canvas>
+	
+	                        <p class="val">0</p>
+	                        <p class="type_hours">Horas</p>
+	                    </div>
+	                </div>
+	                <!-- Hours -->
+	                <!-- Minutes -->
+	                <div class="clock_minutes">
+	                    <div class="bgLayer">
+	                        <canvas id="canvas_minutes" width="122" height="122">
+	                            Tu navegador no soporta el tag canvas de HTML5.
+	                        </canvas>
+	                        <div class="text">
+	                            <p class="val">0</p>
+	                            <p class="type_minutes">Minutos</p>
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- Minutes -->
+	                <!-- Seconds -->
+	                <div class="clock_seconds">
+	                    <div class="bgLayer">
+	                        <canvas id="canvas_seconds" width="122" height="122">
+	                            Tu navegador no soporta el tag canvas de HTML5.
+	                        </canvas>
+	                        <p class="val">0</p>
+	                        <p class="type_seconds">Segundos</p>
+	                    </div>
+	                </div>
+	                <!-- Seconds -->	
+	            </div>
+	            <br style="clear:both; margin:0 10px 0 0" />
+	        	<h5 class="type_next_exercise"></h5>
+	        		
+            	<div class="vueltas"><span class="lap">0</span>/<span class="laps">0</span></div>
+        		
+        		<h1 class="playpause">Detener</h1>
+            </div>
             
-            function onSuccess(position) {
-                initialize(position.coords.latitude,position.coords.longitude);
-            }
-                      
-            function onError(error) {
-                alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-            }
-        </script>
+        </div><!--/wrapper -->
+
     </body>
 </html>
